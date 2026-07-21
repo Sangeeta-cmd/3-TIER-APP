@@ -1,1 +1,10 @@
+name: three-tier-app-workflow
+on: [push]
 
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: say hello
+              run: echo " workflow executed successfully"
