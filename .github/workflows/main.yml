@@ -32,5 +32,5 @@ jobs:
                 context: .
                 push: true
                 tags: |
-                  ${{ secrets.DOCKER_USERNAME }}/frontend-app:v2
-                  ${{ secrets.DOCKER_USERNAME }}/backend-app:v2
+                  ${{ secrets.DOCKER_USER }}/frontend-app:v2
+                  ${{ secrets.DOCKER_USER }}/backend-app:v2
