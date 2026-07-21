@@ -29,8 +29,10 @@ jobs:
             - name: build and push to docker hub
               uses: docker/build-push-action@v4
               with:
+                context: ./frontend
+                file: ./frontend/Dockerfile
                 push: true
                 tags: |
                   ${{ secrets.DOCKER_USER }}/frontend-app:v2
-                  ${{ secrets.DOCKER_USER }}/backend-app:v2
-                context: .
+                 # ${{ secrets.DOCKER_USER }}/backend-app:v2
+                
