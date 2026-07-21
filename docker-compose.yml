@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mongodb:
+    build: 
+      context: .
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    networks:
+      - myapp-networks
+    volumes:
+      - mydata:/data/db
+
+  backend:
+    build: ./express-app
+    ports:
+      - "5000:5000"    
+    networks:
+      - myapp-networks
+    depends_on:
+      - mongodb
+  
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    networks:
+      - myapp-networks
+
+networks:
+  myapp-networks:
+    driver: bridge
+volumes:
+  mydata:

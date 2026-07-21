@@ -1,0 +1,10 @@
+1.  I faced issue when connecting backend container to mongodb container,
+the error says  ---> MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017
+127.0.0.1 (or localhost) inside a Docker container refers to that container itself, not your Windows machine and not the MongoDB container.
+
+So your backend is trying to connect to MongoDB running inside the backend container, but there is no MongoDB server there.
+need to change server.js file here, ===> that is from mongoose.connect("mongodb://127.0.0.1:27017/<db name>");  to ====> "mongodb://<mongodb-container-name>:27017/<db name>"
+
+
+2. I discovered the npm run build related concepts to make binary code of react application as I used create-react module to build react app ====> it is stored in /build folder and can be taken to runtime phase of multi stage container and served to nginx .   (reduce container size drastically)
+
