@@ -12,14 +12,16 @@ app.use(express.json());
 
 // mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/simple_crud');   this is for local development
 
-mongoose.connect ('mongodb://mongodb:27017/simple_crud');  // for dockerized container where mongodb:27017 is container name used to connect backend con to db container
+// mongoose.connect ('mongodb://mongodb:27017/simple_crud');  // for dockerized container where mongodb:27017 is container name used to connect backend con to db container
+
+// mongoose.connect ('mongodb://mongodb-service:27017/simple_crud'); 
 
 // const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, PORT } = process.env;
 // const MONGO_URI = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?authSource=admin`;
 
-// mongoose.connect(MONGO_URI)
-//   .then(() => console.log('Connected to MongoDB via discrete credentials!'))
-//   .catch((err) => console.error('MongoDB connection error:', err));
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('Connected to MongoDB via discrete credentials!'))
+  .catch((err) => console.error('MongoDB connection error:', err));
 
 const ItemSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -34,7 +36,7 @@ app.put('/api/items/:id', async (req, res) => res.json(await Item.findByIdAndUpd
 app.delete('/api/items/:id', async (req, res) => res.json(await Item.findByIdAndDelete(req.params.id)));
 
 
-const serverPort = 5000;
+const serverPort = process.env.PORT;
 app.listen(serverPort, () => {
   console.log(`Backend server tier running on port ${serverPort}`);
 });

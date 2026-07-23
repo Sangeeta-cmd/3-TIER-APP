@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/items';
+// const API_URL = 'http://localhost:5000/api/items';
+// const API_URL = 'http://backend-service:5000/api/items';
+const API_URL = '/api/items';
 
 function App() {
   const [items, setItems] = useState([]);
