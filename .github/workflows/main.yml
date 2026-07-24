@@ -33,7 +33,7 @@ jobs:
                 file: ./frontend/Dockerfile
                 push: true
                 tags: |
-                  ${{ secrets.DOCKER_USER }}/frontend-app-workflow:v1      
+                  ${{ secrets.DOCKER_USER }}/frontend-app-workflow:v2      
     
     build-push-backend:
         runs-on: ubuntu-latest

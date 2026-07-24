@@ -4,4 +4,4 @@ metadata:
   name: db-details
 data:
   PORT: "5000"
-  MONGO_URI: "mongodb://backend-service:27017/simple_crud"
+  MONGO_URI: "mongodb://mongodb-service:27017/simple_crud"
