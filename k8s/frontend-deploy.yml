@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: frontend-app
-        image: sangeeta02/frontend-app:v2
+        image: sangeeta02/frontend-app-workflow:v1
         ports:
         - containerPort: 80

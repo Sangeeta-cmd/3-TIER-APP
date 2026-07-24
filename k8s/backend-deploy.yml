@@ -16,6 +16,18 @@ spec:
     spec:
       containers:
       - name: backend-app
-        image: sangeeta02/3-tier-backend:v1
+        image: sangeeta02/backend-app-workflow:v1
         ports:
         - containerPort: 5000
+        env:
+          - name: DB-PORT
+            valueFrom: 
+              configMapKeyRef:
+                name: db-details
+                key: PORT
+          - name: DB-URI
+            valueFrom:
+              configMapKeyRef:
+                name: db-details
+                key: MONGO_URI
+           
